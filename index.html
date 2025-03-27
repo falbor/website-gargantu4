@@ -39,8 +39,12 @@
           <h1 class="name" title="Niccolò Righetti">Niccolò Righetti</h1>
           <p class="title">IT System Engineer</p>
         </div>
+        <div class="language-switcher">
+          <img src="./assets/images/it-flag.png" alt="Italian" data-lang="it" class="lang-flag active">
+          <img src="./assets/images/en-flag.png" alt="English" data-lang="en" class="lang-flag">
+        </div>
         <button class="info_more-btn" data-sidebar-btn>
-          <span>Mostra Contatti</span>
+          <span data-translate="showContacts">Mostra Contatti</span>
           <ion-icon name="chevron-down"></ion-icon>
         </button>
       </div>
@@ -109,16 +113,16 @@
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link  active" data-nav-link data-translate="about">About</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
+            <button class="navbar-link" data-nav-link data-translate="resume">Resume</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Extra</button>
+            <button class="navbar-link" data-nav-link data-translate="extra">Extra</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contatti</button>
+            <button class="navbar-link" data-nav-link data-translate="contacts">Contatti</button>
           </li>
         </ul>
       </nav>
@@ -127,7 +131,7 @@
       -->
       <article class="about  active" data-page="about">
         <header>
-          <h2 class="h2 article-title">Su di Me</h2>
+          <h2 class="h2 article-title" data-translate="aboutMe">Su di Me</h2>
         </header>
         <section class="about-text">
           <p> Sono un IT System Engineer di Milano, Italia, specializzato nello sviluppo e gestione di sistemi
@@ -143,14 +147,14 @@
           - service
         -->
         <section class="service">
-          <h3 class="h3 service-title">Cosa Faccio</h3>
+          <h3 class="h3 service-title" data-translate="whatIDo">Cosa Faccio</h3>
           <ul class="service-list">
             <li class="service-item">
               <div class="service-icon-box">
                 <img src="./assets/images/icon-design.svg" " alt=" design icon" width="40">
               </div>
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Progettazione IT</h4>
+                <h4 class="h4 service-item-title" data-translate="itDesign">Progettazione IT</h4>
                 <p class="service-item-text"> Progettazione moderna e di alta qualità dei sistemi informatici,
                   realizzata a livello professionale. </p>
               </div>
@@ -160,7 +164,7 @@
                 <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
               </div>
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Sviluppo IT</h4>
+                <h4 class="h4 service-item-title" data-translate="itDevelopment">Sviluppo IT</h4>
                 <p class="service-item-text"> Sviluppo di infrastrutture e sistemi IT di alta qualità, eseguito a
                   livello professionale. </p>
               </div>
@@ -170,7 +174,7 @@
                 <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
               </div>
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Sicurezza informatica</h4>
+                <h4 class="h4 service-item-title" data-translate="itSecurity">Sicurezza informatica</h4>
                 <p class="service-item-text"> Implementazione di misure di sicurezza informatica di alto livello per la
                   protezione dei dati e delle infrastrutture aziendali. </p>
               </div>
@@ -180,7 +184,7 @@
                 <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
               </div>
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Gaming</h4>
+                <h4 class="h4 service-item-title" data-translate="gaming">Gaming</h4>
                 <p class="service-item-text"> Passione per il gaming, con un interesse particolare per le tecnologie
                   all’avanguardia nel mondo dei videogiochi e delle esperienze interattive. </p>
               </div>
@@ -193,14 +197,14 @@
       -->
       <article class="resume" data-page="resume">
         <header>
-          <h2 class="h2 article-title">Curriculum</h2>
+          <h2 class="h2 article-title" data-translate="resumeTitle">Curriculum</h2>
         </header>
         <section class="timeline">
           <div class="title-wrapper">
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
-            <h3 class="h3">Formazione</h3>
+            <h3 class="h3" data-translate="education">Formazione</h3>
           </div>
           <ol class="timeline-list">
             <li class="timeline-item">
@@ -220,7 +224,7 @@
             <div class="icon-box">
               <ion-icon name="book-outline"></ion-icon>
             </div>
-            <h3 class="h3">Esperienza</h3>
+            <h3 class="h3" data-translate="experience">Esperienza</h3>
           </div>
           <ol class="timeline-list">
             <li class="timeline-item">
@@ -276,7 +280,7 @@
           </ol>
         </section>
         <section class="skill">
-          <h3 class="h3 skills-title">Skills</h3>
+          <h3 class="h3 skills-title" data-translate="skillsTitle">Skills</h3>
           <ul class="skills-list content-card">
             <li class="skills-item">
               <div class="title-wrapper">
@@ -330,18 +334,18 @@
       -->
       <article class="extra" data-page="extra">
         <header>
-          <h2 class="h2 article-title">Extra</h2>
+          <h2 class="h2 article-title" data-translate="extraTitle">Extra</h2>
         </header>
         <section class="projects">
           <ul class="filter-list">
             <li class="filter-item">
-              <button data-filter-btn>All</button>
+              <button data-filter-btn data-translate="all">All</button>
             </li>
             <li class="filter-item">
-              <button class="active" data-filter-btn>JS</button>
+              <button class="active" data-filter-btn data-translate="js">JS</button>
             </li>
             <li class="filter-item">
-              <button data-filter-btn>Games</button>
+              <button data-filter-btn data-translate="games">Games</button>
             </li>
           </ul>
           <!--
@@ -349,69 +353,69 @@
       -->
           <div class="filter-select-box">
             <button class="filter-select" data-select>
-              <div class="select-value" data-select-value>Seleziona Categoria</div>
+              <div class="select-value" data-select-value data-translate="selectCategory">Seleziona Categoria</div>
               <div class="select-icon">
                 <ion-icon name="chevron-down"></ion-icon>
               </div>
             </button>
             <ul class="select-list">
               <li class="select-item">
-                <button data-select-item>All</button>
+                <button data-select-item data-translate="all">All</button>
               </li>
               <li class="select-item">
-                <button data-select-item>JS</button>
+                <button data-select-item data-translate="js">JS</button>
               </li>
               <li class="select-item">
-                <button data-select-item>Games</button>
+                <button data-select-item data-translate="games">Games</button>
               </li>
             </ul>
           </div>
           <ul class="project-list">
             <li class="project-item  active" data-filter-item data-category="js">
-              <a href="#">
+              <a href="extra-finance.html">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-1.jpg" alt="finance">
                 </figure>
-                <h3 class="project-title">Finance</h3>
+                <h3 class="project-title" data-translate="finance">Finance</h3>
                 <p class="project-category">JS</p>
               </a>
             </li>
             <li class="project-item  active" data-filter-item data-category="games">
-              <a href="#">
+              <a href="extra-orizon.html">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-2.png" alt="orizon">
                 </figure>
-                <h3 class="project-title">Orizon</h3>
+                <h3 class="project-title" data-translate="orizon">Orizon</h3>
                 <p class="project-category">Games</p>
               </a>
             </li>
             <li class="project-item  active" data-filter-item data-category="js">
-              <a href="#">
+              <a href="extra-fundo.html">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-3.jpg" alt="fundo">
                 </figure>
-                <h3 class="project-title">Fundo</h3>
+                <h3 class="project-title" data-translate="fundo">Fundo</h3>
                 <p class="project-category">JS</p>
               </a>
             </li>
             <li class="project-item  active" data-filter-item data-category="games">
-              <a href="#">
+              <a href="extra-brawlhalla.html">
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
                   <img src="./assets/images/project-4.png" alt="brawlhalla">
                 </figure>
-                <h3 class="project-title">Brawlhalla</h3>
+                <h3 class="project-title" data-translate="brawlhalla">Brawlhalla</h3>
                 <p class="project-category">Games</p>
               </a>
             </li>
@@ -423,7 +427,7 @@
       -->
       <article class="contatti" data-page="contatti">
         <header>
-          <h2 class="h2 article-title">Contatti</h2>
+          <h2 class="h2 article-title" data-translate="contactTitle">Contatti</h2>
         </header>
         <section class="mapbox" data-mapbox>
           <figure>
@@ -433,7 +437,7 @@
           </figure>
         </section>
         <section class="contact-form">
-          <h3 class="h3 form-title">Contattami</h3>
+          <h3 class="h3 form-title" data-translate="contactMe">Contattami</h3>
           <form action="#" class="form" data-form>
             <div class="input-wrapper">
               <input type="text" name="fullname" class="form-input" placeholder="Nome Completo" required
@@ -445,7 +449,7 @@
               data-form-input></textarea>
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
-              <span>Invia</span>
+              <span data-translate="send">Invia</span>
             </button>
           </form>
         </section>

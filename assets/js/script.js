@@ -154,3 +154,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+import translations from './translations.js';
+
+let currentLang = 'it';
+
+// Language switcher
+document.querySelectorAll('.lang-flag').forEach(flag => {
+  flag.addEventListener('click', () => {
+    const lang = flag.dataset.lang;
+    currentLang = lang;
+    updateLanguage(lang);
+    document.querySelectorAll('.lang-flag').forEach(f => f.classList.remove('active'));
+    flag.classList.add('active');
+  });
+});
+
+function updateLanguage(lang) {
+  document.querySelectorAll('[data-translate]').forEach(element => {
+    const key = element.dataset.translate;
+    if (translations[lang][key]) {
+      element.textContent = translations[lang][key];
+    }
+  });
+}
+
+// Project pages functionality
+document.querySelectorAll('.project-item a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const projectId = link.closest('.project-item').dataset.category;
+    openProjectPage(projectId);
+  });
+});
+
+function openProjectPage(projectId) {
+  const projectPages = {
+    js: '/projects/finance.html',
+    games: '/projects/games.html'
+  };
+  
+  window.location.href = projectPages[projectId] || '/projects/default.html';
+}

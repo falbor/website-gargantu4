@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Game</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .game-container {
+            width: 500px;
+            height: 300px;
+            border: 2px solid #333;
+            position: relative;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+        .player {
+            width: 50px;
+            height: 50px;
+            background: #ff4444;
+            position: absolute;
+            bottom: 0;
+        }
+        .obstacle {
+            width: 30px;
+            height: 30px;
+            background: #44ff44;
+            position: absolute;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="project-container">
+        <h1>Simple Game</h1>
+        <div class="game-container" id="gameContainer">
+            <div class="player" id="player"></div>
+        </div>
+        <button onclick="startGame()">Start Game</button>
+        <div id="score">Score: 0</div>
+    </div>
+    <script>
+        let player;
+        let score = 0;
+        let gameLoop;
+
+        function startGame() {
+            player = document.getElementById('player');
+            score = 0;
+            document.getElementById('score').textContent = 'Score: 0';
+            
+            if (gameLoop) clearInterval(gameLoop);
+            gameLoop = setInterval(createObstacle, 2000);
+
+            document.addEventListener('keydown', movePlayer);
+        }
+
+        function movePlayer(e) {
+            const currentLeft = parseInt(player.style.left || 0);
+            if (e.key === 'ArrowLeft' && currentLeft > 0) {
+                player.style.left = (currentLeft - 10) + 'px';
+            }
+            if (e.key === 'ArrowRight' && currentLeft < 450) {
+                player.style.left = (currentLeft + 10) + 'px';
+            }
+        }
+
+        function createObstacle() {
+            const obstacle = document.createElement('div');
+            obstacle.className = 'obstacle';
+            obstacle.style.left = Math.random() * 470 + 'px';
+            document.getElementById('gameContainer').appendChild(obstacle);
+
+            const falling = setInterval(() => {
+                const top = parseInt(obstacle.style.top || 0);
+                if (top > 250) {
+                    clearInterval(falling);
+                    obstacle.remove();
+                    score++;
+                    document.getElementById('score').textContent = `Score: ${score}`;
+                } else {
+                    obstacle.style.top = (top + 2) + 'px';
+                }
+            }, 20);
+        }
+    </script>
+</body>
+</html>
