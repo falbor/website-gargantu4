@@ -20,6 +20,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -40,8 +42,12 @@
           <p class="title">IT System Engineer</p>
         </div>
         <div class="language-switcher">
-          <img src="./assets/images/it-flag.png" alt="Italian" data-lang="it" class="lang-flag active">
-          <img src="./assets/images/en-flag.png" alt="English" data-lang="en" class="lang-flag">
+          <button class="lang-btn" data-lang="it">
+            <i class="fas fa-flag"></i> IT
+          </button>
+          <button class="lang-btn" data-lang="en">
+            <i class="fas fa-flag"></i> EN
+          </button>
         </div>
         <button class="info_more-btn" data-sidebar-btn>
           <span data-translate="showContacts">Mostra Contatti</span>

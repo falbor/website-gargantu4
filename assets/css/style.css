@@ -2147,16 +2147,43 @@ textarea.form-input::-webkit-resizer {
   margin-bottom: 15px;
 }
 
-.lang-flag {
-  width: 30px;
-  height: 20px;
+.lang-btn {
+  padding: 8px 12px;
+  border: none;
+  background: var(--jet);
+  color: var(--light-gray);
+  border-radius: 4px;
   cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.3s;
+  transition: all 0.3s;
+  margin: 0 5px;
 }
 
-.lang-flag.active {
-  opacity: 1;
+.lang-btn:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--eerie-black-1);
+}
+
+.lang-btn.active {
+  background: var(--orange-yellow-crayola);
+  color: var(--eerie-black-1);
+}
+
+.theme-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--orange-yellow-crayola);
+  color: var(--eerie-black-1);
+  cursor: pointer;
+  z-index: 999;
+}
+
+.dark-theme {
+  --bg-color: var(--eerie-black-2);
+  --text-color: var(--light-gray);
 }
 
 .project-container {
