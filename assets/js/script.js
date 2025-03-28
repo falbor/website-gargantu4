@@ -65,9 +65,9 @@ for (let i = 0; i < filterBtn.length; i++) {
 // Language switcher
 let currentLang = 'it';
 
-function switchLanguage(lang) {
-  currentLang = lang;
-  document.querySelectorAll('[data-translate]').forEach(element => {
+function updateContent(lang) {
+  const elements = document.querySelectorAll('[data-translate]');
+  elements.forEach(element => {
     const key = element.getAttribute('data-translate');
     if (translations[lang] && translations[lang][key]) {
       element.textContent = translations[lang][key];
@@ -75,37 +75,14 @@ function switchLanguage(lang) {
   });
 }
 
-// Add event listeners for language buttons
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    const lang = e.target.closest('.lang-btn').dataset.lang;
-    switchLanguage(lang);
-  });
-});
-
-// Initialize with Italian
-switchLanguage('it');
-
-
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
+function switchLanguage(lang) {
+  currentLang = lang;
+  updateContent(lang);
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
   });
 }
+
 
 // testimonials variables
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
@@ -174,6 +151,17 @@ themeBtn.addEventListener('click', () => {
 });
 
 // Project pages functionality
+function openProjectPage(projectId) {
+  const projectPages = {
+    'finance': '/projects/finance.html',
+    'games': '/projects/games.html',
+    'orizon': '/projects/orizon.html',
+    'fundo': '/projects/fundo.html',
+    'brawlhalla': '/projects/brawlhalla.html'
+  };
+  window.location.href = projectPages[projectId] || '/';
+}
+
 document.querySelectorAll('.project-item a').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -182,15 +170,30 @@ document.querySelectorAll('.project-item a').forEach(link => {
   });
 });
 
-function openProjectPage(projectId) {
-  const projectPages = {
-    js: '/projects/finance.html',
-    games: '/projects/games.html'
-  };
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize language switcher
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchLanguage(btn.getAttribute('data-lang')));
+  });
 
-  window.location.href = projectPages[projectId] || '/projects/default.html';
-}
+  // Initialize navigation
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  const pages = document.querySelectorAll('[data-page]');
 
-document.addEventListener("DOMContentLoaded", () => {
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.active').classList.remove('active');
+      link.classList.add('active');
+      pages.forEach(page => {
+        if (page.dataset.page === link.textContent.toLowerCase()) {
+          page.classList.add('active');
+        } else {
+          page.classList.remove('active');
+        }
+      });
+    });
+  });
 
+  // Initialize with Italian language
+  switchLanguage('it');
 });

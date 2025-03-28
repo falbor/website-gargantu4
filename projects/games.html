@@ -14,6 +14,7 @@
             position: relative;
             overflow: hidden;
             margin: 20px auto;
+            background: #f0f0f0;
         }
         .player {
             width: 50px;
@@ -21,6 +22,7 @@
             background: #ff4444;
             position: absolute;
             bottom: 0;
+            transition: left 0.1s;
         }
         .obstacle {
             width: 30px;
@@ -29,26 +31,36 @@
             position: absolute;
             top: 0;
         }
+        #score {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="project-container">
-        <h1>Simple Game</h1>
-        <div class="game-container" id="gameContainer">
-            <div class="player" id="player"></div>
+        <h1>Dodge Game</h1>
+        <div id="gameContainer" class="game-container">
+            <div id="player" class="player"></div>
         </div>
-        <button onclick="startGame()">Start Game</button>
         <div id="score">Score: 0</div>
+        <button onclick="startGame()">Start Game</button>
     </div>
     <script>
         let player;
         let score = 0;
         let gameLoop;
+        let isGameActive = false;
 
         function startGame() {
+            if (isGameActive) return;
+            
             player = document.getElementById('player');
             score = 0;
+            isGameActive = true;
             document.getElementById('score').textContent = 'Score: 0';
+            player.style.left = '225px';
             
             if (gameLoop) clearInterval(gameLoop);
             gameLoop = setInterval(createObstacle, 2000);
@@ -57,7 +69,9 @@
         }
 
         function movePlayer(e) {
-            const currentLeft = parseInt(player.style.left || 0);
+            if (!isGameActive) return;
+            
+            const currentLeft = parseInt(player.style.left || 225);
             if (e.key === 'ArrowLeft' && currentLeft > 0) {
                 player.style.left = (currentLeft - 10) + 'px';
             }
@@ -73,6 +87,12 @@
             document.getElementById('gameContainer').appendChild(obstacle);
 
             const falling = setInterval(() => {
+                if (!isGameActive) {
+                    clearInterval(falling);
+                    obstacle.remove();
+                    return;
+                }
+
                 const top = parseInt(obstacle.style.top || 0);
                 if (top > 250) {
                     clearInterval(falling);
@@ -81,8 +101,27 @@
                     document.getElementById('score').textContent = `Score: ${score}`;
                 } else {
                     obstacle.style.top = (top + 2) + 'px';
+                    checkCollision(obstacle);
                 }
             }, 20);
+        }
+
+        function checkCollision(obstacle) {
+            const playerRect = player.getBoundingClientRect();
+            const obstacleRect = obstacle.getBoundingClientRect();
+
+            if (playerRect.left < obstacleRect.right &&
+                playerRect.right > obstacleRect.left &&
+                playerRect.top < obstacleRect.bottom &&
+                playerRect.bottom > obstacleRect.top) {
+                gameOver();
+            }
+        }
+
+        function gameOver() {
+            isGameActive = false;
+            clearInterval(gameLoop);
+            alert(`Game Over! Final Score: ${score}`);
         }
     </script>
 </body>

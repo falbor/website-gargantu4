@@ -30,3 +30,34 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tools</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div class="project-container">
+        <h1>Finance Tools</h1>
+        <div class="calculator">
+            <input type="number" id="amount" placeholder="Amount">
+            <input type="number" id="rate" placeholder="Interest Rate (%)">
+            <input type="number" id="years" placeholder="Years">
+            <button onclick="calculateInterest()">Calculate</button>
+            <div id="result"></div>
+        </div>
+    </div>
+    <script>
+        function calculateInterest() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const rate = parseFloat(document.getElementById('rate').value) / 100;
+            const years = parseInt(document.getElementById('years').value);
+            const result = amount * Math.pow(1 + rate, years);
+            document.getElementById('result').textContent = 
+                `Final amount: ${result.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
