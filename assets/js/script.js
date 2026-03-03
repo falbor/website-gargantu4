@@ -150,26 +150,6 @@ themeBtn.addEventListener('click', () => {
     '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
 });
 
-// Project pages functionality
-function openProjectPage(projectId) {
-  const projectPages = {
-    'finance': '/projects/finance.html',
-    'games': '/projects/games.html',
-    'orizon': '/projects/orizon.html',
-    'fundo': '/projects/fundo.html',
-    'brawlhalla': '/projects/brawlhalla.html'
-  };
-  window.location.href = projectPages[projectId] || '/';
-}
-
-document.querySelectorAll('.project-item a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const projectId = link.closest('.project-item').dataset.category;
-    openProjectPage(projectId);
-  });
-});
-
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize language switcher
   document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -182,10 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
-      document.querySelector('.active').classList.remove('active');
+      document.querySelector('[data-nav-link].active')?.classList.remove('active');
       link.classList.add('active');
+      const target = link.dataset.navTarget;
       pages.forEach(page => {
-        if (page.dataset.page === link.textContent.toLowerCase()) {
+        if (page.dataset.page === target) {
           page.classList.add('active');
         } else {
           page.classList.remove('active');
